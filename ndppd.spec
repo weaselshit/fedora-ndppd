@@ -25,7 +25,7 @@ Discovery Protocol) messages between interfaces.
 %setup -n %{name}-master
 
 %build
-make %{?_smp_mflags} 
+make %{?_smp_mflags} CXXFLAGS="%{optflags}"
 
 %install
 mkdir -p $RPM_BUILD_ROOT%{_localstatedir}/run/ndppd
