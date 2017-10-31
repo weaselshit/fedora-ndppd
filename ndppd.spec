@@ -1,6 +1,10 @@
+%{!?commit: %global commit %(git rev-parse HEAD)}
+%{!?gitdate: %global gitdate %(git rev-list --max-count=1 --date=format:%Y%m%d --pretty=format:%cd %{commit} | tail -1)}
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+
 Name: ndppd
 Version: 0.2.5.999
-Release: 1%{?dist}
+Release: 2.%{gitdate}git%{shortcommit}%{?dist}
 Summary: NDP Proxy Daemon
 
 Group: System Environment/Daemons
