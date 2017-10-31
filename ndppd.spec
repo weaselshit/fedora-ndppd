@@ -1,24 +1,24 @@
-Name:		ndppd
-Version:	0.2.5
-Release:	1%{?dist}
-Summary:	NDP Proxy Daemon
+Name: ndppd
+Version: 0.2.5.999
+Release: 1%{?dist}
+Summary: NDP Proxy Daemon
 
-Group:		System Environment/Daemons
-License:	GPL-3
-URL:		https://github.com/DanielAdolfsson/ndppd
-Source0:	https://github.com/DanielAdolfsson/%{name}/archive/%{version}.tar.gz
-Source1:	ndppd.service
+Group: System Environment/Daemons
+License: GPL-3
+URL: https://github.com/DanielAdolfsson/ndppd
+Source0: https://github.com/DanielAdolfsson/%{name}/archive/master.tar.gz
+Source1: ndppd.service
 
-BuildRequires:	gcc
-BuildRequires:	make
-BuildRequires:	systemd-units
+BuildRequires: gcc
+BuildRequires: make
+BuildRequires: systemd-units
 
 %description
 'ndppd', or NDP Proxy Daemon, is a daemon that proxies NDP (Neighbor 
 Discovery Protocol) messages between interfaces.
 
 %prep
-%setup -q
+%setup -n %{name}-master
 
 %build
 make %{?_smp_mflags} 
@@ -49,3 +49,4 @@ install -Dt ${RPM_BUILD_ROOT}%{_unitdir} -m 644 %{SOURCE1}
 %changelog
 * Tue May 16 2017 Dick Marinus <dick@mrns.nl> - 0.2.5-1
 - initial package                                                                                          
+
